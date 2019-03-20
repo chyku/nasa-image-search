@@ -4,28 +4,21 @@ import '../styles/App.css';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {
+      value: this.props.searchTerm,
+      media: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  search = query => {
-    const url = `https://images-api.nasa.gov/search?q=${query}`;
-
-    fetch(url)
-      .then(results => results.json())
-      .then(data => {
-        console.log(data);
-      });
-  };
 
   handleChange(event) {
     this.setState({value: event.target.value});
   }
 
   handleSubmit(event) {
-    this.search(this.state.value);
+    this.props.history.push('/search?q=' + this.state.value);
     event.preventDefault();
   }
 
