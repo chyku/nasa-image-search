@@ -12,6 +12,7 @@ class SearchResults extends Component {
 
     this.state = {
       searchTerm: query.q,
+      // can put extra search filters in here
       result: ''
     }
 
@@ -20,7 +21,6 @@ class SearchResults extends Component {
 
   componentDidMount() {
     this.search(this.state.searchTerm);
-    console.log(this.state.searchTerm);
   }
 
   search = query => {
@@ -30,7 +30,6 @@ class SearchResults extends Component {
       .then(results => results.json())
       .then(data => {
         this.setState({result: data.collection.items});
-        console.log(this.state.result);
       });
   };
 

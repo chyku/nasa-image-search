@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 import '../styles/App.css';
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      value: this.props.searchTerm,
+      value: this.props.searchTerm || '',
       media: ''
     };
 
@@ -33,4 +35,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);

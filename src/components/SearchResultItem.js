@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import MockData from '../data/MockData'
 
 class SearchResultItem extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      result: MockData,
-      title: MockData["data"][0]["title"],
-      preview: MockData["links"][0]["href"]
+      item: this.props.item,
+      title: this.props.item["data"][0]["title"],
+      preview: this.props.item["links"] ? this.props.item["links"][0]["href"] : null
     }
   }
 
