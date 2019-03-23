@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import SearchResultItem from './SearchResultItem';
+import Grid from '@material-ui/core/Grid';
 
 // TODO: limit the items shown on a page (or infinite load)
 // TODO: get the right kind of list
@@ -31,16 +32,25 @@ class SearchResultList extends Component {
 
   render() {
     return (
-      <div className="SearchResultList">
+      <Grid
+          container
+          className="SearchResultList"
+          spacing={16}
+          direction="row"
+          justify="center"
+          alignItems="flex-start"
+        >
         {!this.state.result || this.state.result.length === 0 ?
         <div>No results found.</div> :
         this.state.result.slice(0, 20).map((item, index) => (
-          <SearchResultItem
-            key={index}
-            item={item}
-          />
+          <Grid item xs={2}>
+            <SearchResultItem
+              key={index}
+              item={item}
+            />
+          </Grid>
         ))}
-      </div>
+      </Grid>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
+import TextField from '@material-ui/core/TextField';
 import '../styles/App.css';
 
 class SearchBar extends Component {
@@ -26,11 +27,25 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-      </form>
+      <div class="searchbar">
+        <span>
+          <img src="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg" alt="NASA logo"/>
+          <h1>NASA Image Search</h1>
+        </span>
+        
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            <TextField
+              fullWidth
+              label="Search"
+              value={this.state.value}
+              onChange={this.handleChange}
+              margin="normal"
+              variant="outlined"
+            />
+          </label>
+        </form>
+      </div>
     );
   }
 }

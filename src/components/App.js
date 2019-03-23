@@ -7,7 +7,7 @@ import SearchResults from './SearchResults';
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router forceRefresh={true}>
         <div className="App">
           <Route exact path="/" component={SearchBar} />
           <Route path="/search" component={SearchResults} />
