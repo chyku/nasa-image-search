@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button'
 import '../styles/App.css';
 
 const searchTypes = [
@@ -25,6 +26,10 @@ const searchTypes = [
     value: 'secondary_creator',
     label: 'secondary creator',
   },
+  {
+    value: 'year_start',
+    label: 'time range',
+  },
 ];
 
 class SearchBar extends Component {
@@ -35,6 +40,8 @@ class SearchBar extends Component {
     this.state = {
       searchType: this.props.searchType || 'q',
       value: this.props.searchTerm || '',
+      startYear: this.props.startYear || '',
+      endYear: this.props.endYear || '',
       media: ''
     };
 
@@ -44,20 +51,24 @@ class SearchBar extends Component {
 
   handleChange = name => event => {
     this.setState({[name]: event.target.value});
-    console.log(event.target.value);
   }
 
   handleSubmit(event) {
     this.props.history.push('/search?' + this.state.searchType + '=' + this.state.value);
+    if (this.state.searchType === "year_start") {
+      this.props.history.push('/search?' + this.state.searchType + '=' + this.state.startYear + "&year_end=" + this.state.endYear);
+    }
     event.preventDefault();
   }
 
   render() {
     return (
       <div class="searchbar">
-          <h1>
-            <img id="nasa-logo" src="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg" alt="NASA logo"/>
-            NASA Image Search</h1>
+        <span>
+        <h1>
+          <img id="nasa-logo" src="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg" alt="NASA logo"/>
+          Image Search
+        </h1>
         
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -76,16 +87,37 @@ class SearchBar extends Component {
                 </MenuItem>
               ))}
             </TextField>
-
-            <TextField
+            
+            {this.state.searchType === "year_start" ? 
+              <>
+                <TextField
+                label="Start Year"
+                value={this.state.startYear}
+                onChange={this.handleChange('startYear')}
+                margin="normal"
+                variant="outlined"
+              /> 
+                <TextField
+                  label="End Year"
+                  value={this.state.endYear}
+                  onChange={this.handleChange('endYear')}
+                  margin="normal"
+                  variant="outlined"
+                />
+                <Button type="submit">Submit</Button>
+              </>
+              :
+              <TextField
               label="Search"
               value={this.state.value}
               onChange={this.handleChange('value')}
               margin="normal"
               variant="outlined"
             />
+            }
           </label>
         </form>
+        </span>
       </div>
     );
   }

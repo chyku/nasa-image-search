@@ -12,6 +12,9 @@ class ModalContent extends Component {
       title: this.props.item.data[0].title,
       description: this.props.item.data[0].description,
       keywords: this.props.item.data[0].keywords,
+      date: this.props.item.data[0].date_created,
+      photographer: this.props.item.data[0].photographer,
+      center: this.props.item.data[0].center,
       nasaId: this.props.item.data[0].nasa_id
     };
   }
@@ -26,7 +29,10 @@ class ModalContent extends Component {
           {this.state.preview && <img src={this.state.preview} alt={this.state.title}/> }
         </center>
         <p><b>NASA ID:</b> {this.state.nasaId}</p>
-        <p><b>Keywords:</b> {this.state.keywords.join(', ')}</p>
+        {this.state.keywords && <p><b>Keywords:</b> {this.state.keywords.join(', ')}</p>}
+        {this.state.date && <p><b>Date:</b> {this.state.date}</p>}
+        {this.state.photographer && <p><b>Photographer:</b> {this.state.photographer}</p>}
+        {this.state.center && <p><b>Center:</b> {this.state.center}</p>}
         <Typography variant="subtitle1" id="simple-modal-description">
           {this.state.description}
         </Typography>
