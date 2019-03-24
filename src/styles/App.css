@@ -1,9 +1,12 @@
-.App {
-  text-align: center;
-  position: relative;
-  background-image: url("https://www.nasa.gov/images/content/627360main_potw1209a.jpg");
-  overflow: hidden;
+html, body, .App {
   height: 100%;
+  background-image: url("https://www.nasa.gov/images/content/627360main_potw1209a.jpg");
+}
+
+.App {
+  position: relative;
+  
+  overflow: hidden;
 }
 
 .App-link {
@@ -14,14 +17,26 @@
   vertical-align: middle;
 }
 
-h1 {
-  float: left;
+#search-form {
+  position: relative;
+  display: inline-block;
   vertical-align: middle;
+}
+
+h1 {
+  text-align: left;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 3%;
+}
+
+#submit-button {
+  visibility: hidden;
 }
 
 .searchbar {
   margin-top: 0;
-  padding: 1% 5% 0 5%;
+  padding: 0% 5% 0% 5%;
   background-color: white;
 }
 
@@ -33,6 +48,7 @@ h1 {
 
 #no-result {
   background-color: white;
+  border-radius: 4px;
   padding: 2%;
 }
 

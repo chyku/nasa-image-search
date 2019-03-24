@@ -38,7 +38,9 @@ class SearchResultItem extends Component {
       <CardActionArea onClick={this.handleClick}>
         <CardContent>
           <Typography variant="subtitle1" gutterBottom>
-            {this.state.title}
+            <center>
+              {this.state.title}
+            </center>
           </Typography>
         </CardContent>
         <CardMedia

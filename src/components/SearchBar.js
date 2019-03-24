@@ -64,9 +64,11 @@ class SearchBar extends Component {
   render() {
     return (
       <div class="searchbar">
-        <span>
+        <span id="search-span">
         <h1>
-          <img id="nasa-logo" src="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg" alt="NASA logo"/>
+          <a href="/">
+            <img id="nasa-logo" src="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg" alt="NASA logo"/>
+          </a>
           Image Search
         </h1>
         
@@ -104,7 +106,7 @@ class SearchBar extends Component {
                   margin="normal"
                   variant="outlined"
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" id="submit-button"></Button>
               </>
               :
               <TextField

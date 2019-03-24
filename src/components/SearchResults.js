@@ -38,7 +38,9 @@ class SearchResults extends Component {
     fetch(url)
       .then(results => results.json())
       .then(data => {
-        this.setState({result: data.collection.items});
+        if (data.collection) {
+          this.setState({result: data.collection.items});
+        }
       });
   };
 
