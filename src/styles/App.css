@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  position: relative;
   background-image: url("https://www.nasa.gov/images/content/627360main_potw1209a.jpg");
   overflow: hidden;
 }
@@ -25,33 +26,44 @@
   color: #61dafb;
 }
 
+#nasa-logo {
+  vertical-align: middle;
+}
+
 .searchbar {
   margin-top: 0;
   padding: 1% 5% 0 5%;
   background-color: white;
 }
+
 .SearchResultList {
   width: 90%;
   padding: 5%;
   margin: auto;
 }
+
 .SearchResultItem {
   height: 300px;
   width: auto;
   max-width: 300px;
   overflow: hidden;
 }
+
 .cssLabel {
   color: white;
 }
+
 .modal {
   width: 50%;
   padding: 16px;
   max-height: 80%;
   height: auto;
   margin: auto;
-  margin-top: 5%;
   background-color: white;
   outline: none;
   overflow-y: scroll;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

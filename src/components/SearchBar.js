@@ -18,10 +18,6 @@ const searchTypes = [
     label: 'location',
   },
   {
-    value: 'nasa_id',
-    label: 'NASA ID',
-  },
-  {
     value: 'photographer',
     label: 'photographer',
   },
@@ -59,10 +55,9 @@ class SearchBar extends Component {
   render() {
     return (
       <div class="searchbar">
-        <span>
-          <img src="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg" alt="NASA logo"/>
-          <h1>NASA Image Search</h1>
-        </span>
+          <h1>
+            <img id="nasa-logo" src="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg" alt="NASA logo"/>
+            NASA Image Search</h1>
         
         <form onSubmit={this.handleSubmit}>
           <label>

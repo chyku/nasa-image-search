@@ -11,7 +11,8 @@ class SearchResults extends Component {
     const query = queryString.parse(this.props.location.search);
 
     this.state = {
-      searchTerm: query.q,
+      searchType: Object.keys(query)[0],
+      searchTerm: query[Object.keys(query)[0]],
       // can put extra search filters in here
       result: ''
     }
@@ -20,11 +21,11 @@ class SearchResults extends Component {
   }
 
   componentDidMount() {
-    this.search(this.state.searchTerm);
+    this.search(this.state.searchType, this.state.searchTerm);
   }
 
-  search = query => {
-    const url = `https://images-api.nasa.gov/search?q=${query}`;
+  search = (searchType, query) => {
+    const url = `https://images-api.nasa.gov/search?${searchType}=${query}`;
 
     fetch(url)
       .then(results => results.json())
@@ -36,7 +37,7 @@ class SearchResults extends Component {
   render() {
     return (
       <div className="SearchResults">
-        <SearchBar searchTerm={this.state.searchTerm} />
+        <SearchBar searchType={this.state.searchType} searchTerm={this.state.searchTerm} />
         <SearchResultList result={this.state.result} />
       </div>
     );

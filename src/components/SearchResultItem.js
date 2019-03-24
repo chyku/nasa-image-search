@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import ModalContent from './ModalContent';
+import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -36,7 +37,9 @@ class SearchResultItem extends Component {
       <Card className="SearchResultItem">
       <CardActionArea onClick={this.handleClick}>
         <CardContent>
-          <h4>{this.state.title}</h4>
+          <Typography variant="subtitle1" gutterBottom>
+            {this.state.title}
+          </Typography>
         </CardContent>
         <CardMedia
           className="search-preview"
