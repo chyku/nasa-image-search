@@ -45,7 +45,9 @@ class SearchResultItem extends Component {
           title={this.state.title}
         />
         </CardActionArea>
-        <Modal open={this.state.modal} onClose={this.handleClose}>
+        <Modal
+          open={this.state.modal} 
+          onClose={this.handleClose}>
           <ModalContent item={this.state.item} />
         </Modal>
       </Card>

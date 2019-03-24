@@ -10,7 +10,9 @@ class ModalContent extends Component {
     this.state = {
       item: this.props.item,
       title: this.props.item.data[0].title,
-      description: this.props.item.data[0].description
+      description: this.props.item.data[0].description,
+      keywords: this.props.item.data[0].keywords,
+      nasaId: this.props.item.data[0].nasa_id
     };
   }
 
@@ -18,6 +20,8 @@ class ModalContent extends Component {
     return (
       <div className="modal">
         <h3>{this.state.title}</h3>
+        <p><b>NASA ID:</b> {this.state.nasaId}</p>
+        <p><b>Keywords:</b> {this.state.keywords}</p>
         <Typography variant="subtitle1" id="simple-modal-description">
           {this.state.description}
         </Typography>

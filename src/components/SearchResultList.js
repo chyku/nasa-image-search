@@ -37,7 +37,7 @@ class SearchResultList extends Component {
           className="SearchResultList"
           spacing={16}
           direction="row"
-          justify="center"
+          justify="flex-start"
           alignItems="flex-start"
         >
         {!this.state.result || this.state.result.length === 0 ?

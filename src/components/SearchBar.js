@@ -1,13 +1,43 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 import '../styles/App.css';
 
+const searchTypes = [
+  {
+    value: 'q',
+    label: 'term',
+  },
+  {
+    value: 'keywords',
+    label: 'keywords',
+  },
+  {
+    value: 'location',
+    label: 'location',
+  },
+  {
+    value: 'nasa_id',
+    label: 'NASA ID',
+  },
+  {
+    value: 'photographer',
+    label: 'photographer',
+  },
+  {
+    value: 'secondary_creator',
+    label: 'secondary creator',
+  },
+];
+
 class SearchBar extends Component {
+  
   constructor(props) {
     super(props);
 
     this.state = {
+      searchType: this.props.searchType || 'q',
       value: this.props.searchTerm || '',
       media: ''
     };
@@ -16,12 +46,13 @@ class SearchBar extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleChange = name => event => {
+    this.setState({[name]: event.target.value});
+    console.log(event.target.value);
   }
 
   handleSubmit(event) {
-    this.props.history.push('/search?q=' + this.state.value);
+    this.props.history.push('/search?' + this.state.searchType + '=' + this.state.value);
     event.preventDefault();
   }
 
@@ -36,10 +67,25 @@ class SearchBar extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             <TextField
-              fullWidth
+              select
+              label="Select"
+              value={this.state.searchType}
+              onChange={this.handleChange('searchType')}
+              helperText="Refine your search"
+              margin="normal"
+              variant="outlined"
+            >
+              {searchTypes.map(option => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+
+            <TextField
               label="Search"
               value={this.state.value}
-              onChange={this.handleChange}
+              onChange={this.handleChange('value')}
               margin="normal"
               variant="outlined"
             />
