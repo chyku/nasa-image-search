@@ -26,13 +26,15 @@ class ModalContent extends Component {
           <Typography variant="h5" gutterBottom>
             {this.state.title}
           </Typography>
-          {this.state.preview && <img src={this.state.preview} alt={this.state.title}/> }
+          {this.state.preview && <img src={this.state.preview} alt={this.state.title} id="modal-img"/> }
         </center>
+
         <p><b>NASA ID:</b> {this.state.nasaId}</p>
         {this.state.keywords && <p><b>Keywords:</b> {this.state.keywords.join(', ')}</p>}
         {this.state.date && <p><b>Date:</b> {this.state.date}</p>}
         {this.state.photographer && <p><b>Photographer:</b> {this.state.photographer}</p>}
         {this.state.center && <p><b>Center:</b> {this.state.center}</p>}
+
         <Typography variant="subtitle1" id="simple-modal-description">
           {this.state.description}
         </Typography>

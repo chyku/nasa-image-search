@@ -70,7 +70,7 @@ class SearchBar extends Component {
           Image Search
         </h1>
         
-        <form onSubmit={this.handleSubmit}>
+        <form id="search-form" onSubmit={this.handleSubmit}>
           <label>
             <TextField
               select

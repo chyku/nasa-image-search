@@ -75,7 +75,9 @@ class SearchResultList extends Component {
         </Grid> :
           <>
             {this.renderItems()}
-            <Button onClick={this.loadItems}>Load more</Button>
+            <Grid item s={2}>
+              <Button variant="contained" onClick={this.loadItems}>Load more</Button>
+            </Grid>
           </>
         }
       </Grid>
